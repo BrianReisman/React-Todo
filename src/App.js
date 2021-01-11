@@ -34,7 +34,6 @@ class App extends React.Component {
     this.setState({
       list: this.state.list.map(item => {
           if(item.id === clickedId){
-            console.log('something!')
             return {
               //// ...item, completed: true
               //"the item as it was, BUT the completed property is going to be set to NOT what the item (as it was) was. The oposite"
@@ -56,14 +55,20 @@ class App extends React.Component {
     // this.setState({list: newList})
   }
   
+  clearCompletedHandler = () => {
+    const cleanList = this.state.list.filter(item => {
+      return !item.completed
+    })
+
+    this.setState({list: cleanList})
+  }
   
   render() {
-    console.log(this.state.list)
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList list={this.state.list} taskClickHandler={this.taskClickHandler}/>
-        <TodoForm addItem={this.addItemHandler}/>
+        <TodoForm addItem={this.addItemHandler} clearCompletedHandler={this.clearCompletedHandler}/>
       </div>
     );
   }

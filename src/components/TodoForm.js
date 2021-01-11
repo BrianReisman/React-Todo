@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { useLayoutEffect } from "react";
 
 const TodoForm = (props) => {
   const [input, setInput] = useState("");
-  console.log(props);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -21,11 +21,19 @@ const TodoForm = (props) => {
     setInput(e.target.value);
   };
 
+  const onClear = e => {
+    e.preventDefault();
+    if(input){
+      setInput('')
+    }
+    props.clearCompletedHandler(); //no argument needed, do the thing you do.
+  }
+
   return (
     <form onSubmit={onSubmit}>
       <input type="text" value={input} onChange={onChange} />
-      <button>Add Todo</button>
-      <button>Clear Completed</button>
+      <button onClick={onSubmit}>Add Todo</button>
+      <button onClick={onClear}>Clear Completed</button>
     </form>
   );
 };
