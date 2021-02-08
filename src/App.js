@@ -6,13 +6,23 @@ class App extends React.Component {
   state = {
     todos: [
       {
-        task: "Finish LS work ",
+        task: "Finish LS work",
         id: 1528817077286,
         completed: false,
       },
       {
         task: "1hr of Udemy React",
         id: 1528817084358,
+        completed: false,
+      },
+      {
+        task: "Call with Lauren",
+        id: 1528817884358,
+        completed: false,
+      },
+      {
+        task: "Plato Demo",
+        id: 1578817084358,
         completed: false,
       },
     ],
